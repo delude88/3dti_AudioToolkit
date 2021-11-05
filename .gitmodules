@@ -10,3 +10,6 @@
 	path = 3dti_ResourceManager/third_party_libraries/eigen
 	url = https://github.com/eigenteam/eigen-git-mirror.git
 	branch = master
+[submodule "cereal"]
+	path = include/cereal
+	url = https://github.com/USCiLab/cereal.git
