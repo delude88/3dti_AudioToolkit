@@ -71,12 +71,10 @@ target_include_directories(${PROJECT_NAME}
         ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager/third_party_libraries
         ${CMAKE_CURRENT_SOURCE_DIR}/3dti_Toolkit
         ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager/third_party_libraries/sofacoustics/libsofa/src
-        ${EIGEN3_INCLUDE_DIR}
-        ${NETCDF_INCLUDES}
+        ${Eigen3_INCLUDE_DIR}
         )
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
         cereal
-        ${Eigen_BINARY_DIR}
-        ${NETCDF_LIBRARIES}
+        ${Eigen3_BINARY_DIR}
         )
