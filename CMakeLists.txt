@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.8)
 project(3dtiAudioToolkit LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-SET(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_LIST_DIR}/cmake/modules")
 
 #set (NETCDF_CXX "YES")
 #find_package(NetCDF REQUIRED)
