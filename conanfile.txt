@@ -1,0 +1,6 @@
+[requires]
+cereal/1.3.0
+
+[generators]
+cmake
+cmake_find_package
