@@ -9,9 +9,10 @@ find_package(Eigen3 REQUIRED)
 find_package(cereal REQUIRED)
 
 add_library(${PROJECT_NAME})
+add_library(${PROJECT_NAME}Static STATIC)
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
-target_sources(${PROJECT_NAME}
-        PUBLIC
+add_library(${PROJECT_NAME}::${PROJECT_NAME}Static ALIAS ${PROJECT_NAME}Static)
+set(SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/3dti_Toolkit/BinauralSpatializer/Environment.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/3dti_Toolkit/BinauralSpatializer/Core.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/3dti_Toolkit/BinauralSpatializer/SingleSourceDSP.cpp
@@ -61,6 +62,15 @@ target_sources(${PROJECT_NAME}
         ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager/ILD/ILDCereal.cpp
         )
 
+target_sources(${PROJECT_NAME}
+        PUBLIC
+        ${SOURCES}
+        )
+target_sources(${PROJECT_NAME}Static
+        PUBLIC
+        ${SOURCES}
+        )
+
 target_include_directories(${PROJECT_NAME}
         PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager
@@ -69,8 +79,21 @@ target_include_directories(${PROJECT_NAME}
         ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager/third_party_libraries/sofacoustics/libsofa/src
         ${Eigen3_INCLUDE_DIR}
         )
-target_link_libraries(${PROJECT_NAME}
+target_include_directories(${PROJECT_NAME}Static
         PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager
+        ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager/third_party_libraries
+        ${CMAKE_CURRENT_SOURCE_DIR}/3dti_Toolkit
+        ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager/third_party_libraries/sofacoustics/libsofa/src
+        ${Eigen3_INCLUDE_DIR}
+        )
+target_link_libraries(${PROJECT_NAME}
+        PRIVATE
+        cereal
+        ${Eigen3_BINARY_DIR}
+        )
+target_link_libraries(${PROJECT_NAME}Static
+        PRIVATE
         cereal
         ${Eigen3_BINARY_DIR}
         )
