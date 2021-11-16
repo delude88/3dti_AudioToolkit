@@ -74,17 +74,15 @@ target_sources(${PROJECT_NAME}Static
 target_include_directories(${PROJECT_NAME}
         PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager
-        ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager/third_party_libraries
         ${CMAKE_CURRENT_SOURCE_DIR}/3dti_Toolkit
-        ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager/third_party_libraries/sofacoustics/libsofa/src
+        ${cereal_INCLUDE_DIR}
         ${Eigen3_INCLUDE_DIR}
         )
 target_include_directories(${PROJECT_NAME}Static
         PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager
-        ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager/third_party_libraries
         ${CMAKE_CURRENT_SOURCE_DIR}/3dti_Toolkit
-        ${CMAKE_CURRENT_SOURCE_DIR}/3dti_ResourceManager/third_party_libraries/sofacoustics/libsofa/src
+        ${cereal_INCLUDE_DIR}
         ${Eigen3_INCLUDE_DIR}
         )
 target_link_libraries(${PROJECT_NAME}
