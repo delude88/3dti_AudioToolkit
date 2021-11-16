@@ -8,10 +8,6 @@ set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR} ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_L
 find_package(Eigen3 REQUIRED)
 find_package(cereal REQUIRED)
 
-if (WIN32)
-    add_compile_definitions(_HAS_STD_BYTE=0)
-endif (WIN32)
-
 add_library(${PROJECT_NAME})
 add_library(${PROJECT_NAME}Static STATIC)
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
@@ -74,6 +70,11 @@ target_sources(${PROJECT_NAME}Static
         PUBLIC
         ${SOURCES}
         )
+
+if (WIN32)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE _HAS_STD_BYTE=0)
+    target_compile_definitions(${PROJECT_NAME}Static PRIVATE _HAS_STD_BYTE=0)
+endif (WIN32)
 
 target_include_directories(${PROJECT_NAME}
         PUBLIC
