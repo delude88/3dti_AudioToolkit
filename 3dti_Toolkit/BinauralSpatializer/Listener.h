@@ -246,7 +246,6 @@ class CHRTF;
 		friend class CCore;							//Friend Class definition
 		friend class CEnvironment;					//Friend Class definition
 		friend class CSingleSourceDSP;				//Friend Class definition
-		friend class CListener;						//Friend Class definition
 	};    
 }
 #endif
