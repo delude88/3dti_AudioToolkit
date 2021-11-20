@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR} ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_LIST_DIR}/cmake/modules)
 
 find_package(Eigen3 REQUIRED)
-find_package(cereal REQUIRED)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/deps/cereal)
 
 add_library(${PROJECT_NAME})
 add_library(${PROJECT_NAME}Static STATIC)
