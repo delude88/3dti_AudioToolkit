@@ -72,8 +72,8 @@ target_sources(${PROJECT_NAME}Static
         )
 
 if (WIN32)
-    target_compile_definitions(${PROJECT_NAME} PUBLIC _HAS_STD_BYTE=0)
-    target_compile_definitions(${PROJECT_NAME}Static PUBLIC _HAS_STD_BYTE=0)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE _HAS_STD_BYTE=0)
+    target_compile_definitions(${PROJECT_NAME}Static PRIVATE _HAS_STD_BYTE=0)
 endif (WIN32)
 
 target_include_directories(${PROJECT_NAME}
