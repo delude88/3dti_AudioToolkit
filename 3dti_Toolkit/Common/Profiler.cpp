@@ -37,6 +37,7 @@
 #include <Common/ErrorHandler.h>
 
 #if defined(PLATFORM_WIN32) || defined (PLATFORM_WIN64)
+#define WIN32_LEAN_AND_MEAN
 #include "Windows.h"
 #endif
 
