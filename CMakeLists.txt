@@ -86,12 +86,12 @@ target_include_directories(${PROJECT_NAME}Static
         ${Eigen3_INCLUDE_DIR}
         )
 target_link_libraries(${PROJECT_NAME}
-        PRIVATE
+        PUBLIC
         cereal
         ${Eigen3_BINARY_DIR}
         )
 target_link_libraries(${PROJECT_NAME}Static
-        PRIVATE
+        PUBLIC
         cereal
         ${Eigen3_BINARY_DIR}
         )
