@@ -155,7 +155,7 @@ namespace Common {
 	// GET METHODS
 
 		// Get distance (vector modulus) in whatever units you are using
-	const float CVector3::GetDistance() const
+	float CVector3::GetDistance() const
 	{
 		// Error handler: trust in GetSqrDistance
 		// Sqrt may set errno if the argument is negative, but we have full control on this argument and we know that it can never be negative		
@@ -165,7 +165,7 @@ namespace Common {
 	//////////////////////////////////////////////
 
 	// Get square of distance (avoid computing square roots)
-	const float CVector3::GetSqrDistance() const
+	float CVector3::GetSqrDistance() const
 	{
 		// Error handler:
 		//SET_RESULT(RESULT_OK, "Distance computed succesfully.");
@@ -176,8 +176,8 @@ namespace Common {
 
 	//////////////////////////////////////////////
 
-	// Get elevation in radians, according to the selected axis convention. Currently uses LISTEN database convention for elevation angles: full circle starting with 0º in front towards up. 
-	const float CVector3::GetElevationRadians() const
+	// Get elevation in radians, according to the selected axis convention. Currently uses LISTEN database convention for elevation angles: full circle starting with 0ï¿½ in front towards up. 
+    float CVector3::GetElevationRadians() const
 	{
 		// Error handler:
 		float distance = GetDistance();
@@ -208,8 +208,8 @@ namespace Common {
 
 	//////////////////////////////////////////////
 
-	// Get azimuth in radians, according to the selected axis convention. Currently uses LISTEN database convention for azimuth angles: anti-clockwise full circle starting with 0º in front.
-	const float CVector3::GetAzimuthRadians() const
+	// Get azimuth in radians, according to the selected axis convention. Currently uses LISTEN database convention for azimuth angles: anti-clockwise full circle starting with 0ï¿½ in front.
+	float CVector3::GetAzimuthRadians() const
 	{
 		// Error handler:
 		float rightAxis = GetAxis(RIGHT_AXIS);
@@ -236,8 +236,8 @@ namespace Common {
 
 	//////////////////////////////////////////////
 
-	// Get elevation in degrees, according to the selected axis convention. Currently uses LISTEN database convention for elevation angles: full circle starting with 0º in front towards up. 
-	const float CVector3::GetElevationDegrees() const
+	// Get elevation in degrees, according to the selected axis convention. Currently uses LISTEN database convention for elevation angles: full circle starting with 0ï¿½ in front towards up. 
+	float CVector3::GetElevationDegrees() const
 	{
 		// Error handler:
 		// Trust in GetElevationRadians for setting result
@@ -247,8 +247,8 @@ namespace Common {
 
 	//////////////////////////////////////////////
 
-	// Get azimuth in degress, according to the selected axis convention. Currently uses LISTEN database convention for azimuth angles: anti-clockwise full circle starting with 0º in front. 
-	const float CVector3::GetAzimuthDegrees() const
+	// Get azimuth in degress, according to the selected axis convention. Currently uses LISTEN database convention for azimuth angles: anti-clockwise full circle starting with 0ï¿½ in front. 
+	float CVector3::GetAzimuthDegrees() const
 	{
 		// Error handler:
 		// Trust in GetAzimuthRadians for setting result
@@ -258,7 +258,7 @@ namespace Common {
 
 	//////////////////////////////////////////////
 
-	// Set the x,y,z coordinates from azimuth, elevation and distance. Currently uses LISTEN database convention for azimuth angles : anti - clockwise full circle starting with 0º in front.
+	// Set the x,y,z coordinates from azimuth, elevation and distance. Currently uses LISTEN database convention for azimuth angles : anti - clockwise full circle starting with 0ï¿½ in front.
 	void CVector3::SetFromAED(float azimuth, float elevation, float distance)
 	{
 		azimuth = azimuth   * (M_PI / 180.0f);
@@ -278,8 +278,8 @@ namespace Common {
 
 	//////////////////////////////////////////////
 
-	// Get the interaural azimut angle in radians, according to the selected axis convention. Currently uses LISTEN database convention for elevation angles: full circle starting with 0º in front towards up.  
-	const float CVector3::GetInterauralAzimuthRadians() const
+	// Get the interaural azimut angle in radians, according to the selected axis convention. Currently uses LISTEN database convention for elevation angles: full circle starting with 0ï¿½ in front towards up.  
+	float CVector3::GetInterauralAzimuthRadians() const
 	{
 		float distance = GetDistance();
 		if (distance == 0.0f)
@@ -301,7 +301,7 @@ namespace Common {
 	//////////////////////////////////////////////
 
 	// Get the angle that this vector keeps with the forward axis
-	const float CVector3::GetAngleToForwardAxisDegrees() const
+	float CVector3::GetAngleToForwardAxisDegrees() const
 	{
 		return GetAngleToForwardAxisRadians() * (180.0f / M_PI);
 	}
@@ -309,7 +309,7 @@ namespace Common {
 	//////////////////////////////////////////////
 
 	// Get the angle that this vector keeps with the forward axis
-	const float CVector3::GetAngleToForwardAxisRadians() const
+	float CVector3::GetAngleToForwardAxisRadians() const
 	{
 		float distance = GetDistance();
 		if (distance == 0.0f)
@@ -326,8 +326,8 @@ namespace Common {
 
 	//////////////////////////////////////////////
 
-	// Get the interaural elevation angle in radians, according to the selected axis convention. Currently uses LISTEN database convention for elevation angles: full circle starting with 0º in front towards up.  
-	const float CVector3::GetInterauralElevationRadians() const
+	// Get the interaural elevation angle in radians, according to the selected axis convention. Currently uses LISTEN database convention for elevation angles: full circle starting with 0ï¿½ in front towards up.  
+	float CVector3::GetInterauralElevationRadians() const
 	{
 		float distance = GetDistance();
 		if (distance == 0.0f)
@@ -342,14 +342,14 @@ namespace Common {
 		return angle >= 0 ? angle : angle + 2.0 * M_PI;
 	}
 	//////////////////////////////////////////////
-	const float CVector3::GetInterauralAzimuthDegrees() const
+	float CVector3::GetInterauralAzimuthDegrees() const
 	{
 		// Error handler:
 		// Trust in GetInterauralAzimutRadians for setting result
 		return GetInterauralAzimuthRadians() * (180.0f / M_PI);
 	}
 	//////////////////////////////////////////////
-	const float CVector3::GetInterauralElevationDegrees() const
+	float CVector3::GetInterauralElevationDegrees() const
 	{
 		// Error handler:
 		// Trust in GetInterauralElevationRadians for setting result
@@ -375,19 +375,19 @@ namespace Common {
 
 	//////////////////////////////////////////////
 
-	const float CVector3::GetAxis(TAxis _axis) const
+	float CVector3::GetAxis(TAxis _axis) const
 	{
 		// Error handler:
 		//SET_RESULT(RESULT_OK, "Succesfully got axis from convention.");
 
 		switch (_axis)
 		{
-			case AXIS_X: return x; break;
-			case AXIS_Y: return y; break;
-			case AXIS_Z: return z; break;
-			case AXIS_MINUS_X: return -x; break;
-			case AXIS_MINUS_Y: return -y; break;
-			case AXIS_MINUS_Z: return -z; break;
+			case AXIS_X: return x;
+			case AXIS_Y: return y;
+			case AXIS_Z: return z;
+			case AXIS_MINUS_X: return -x;
+			case AXIS_MINUS_Y: return -y;
+			case AXIS_MINUS_Z: return -z;
 			default: SET_RESULT(RESULT_ERROR_CASENOTDEFINED, "Trying to get an axis which name is not defined");  return 0.0f;
 		}
 	}

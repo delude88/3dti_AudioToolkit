@@ -165,7 +165,7 @@ namespace Common {
 		*	\param [in] sampleRate sample rate, in Hz
 		*   \eh On error, an error code is reported to the error handler.
 		*/
-		void ApplyGainExponentially(float &previousAttenuation_Channel1, float &previousAttenuation_Channel2, float attenuation, int bufferSize, int sampleRate)
+		void ApplyGainExponentially(float &previousAttenuation_Channel1, float &previousAttenuation_Channel2, float attenuation, int /*bufferSize*/, int sampleRate)
 		{
 			float previousGainChannel2 = previousAttenuation_Channel2;
 			float gainChannel2 = 0.0f;
@@ -432,7 +432,7 @@ namespace Common {
 		*	\param [in] _nchannels number of channels
 		*   \eh On success, RESULT_OK is reported to the error handler.
 		*/
-		void Feed(stored* _data, int _length, int _nchannels)
+		void Feed(stored* _data, int _length, int /*_nchannels*/)
 		{
 			// error handler: no possible error sources, other than reallocation failure after resize (not expected)
 			// NOTE: nchannels is not being used

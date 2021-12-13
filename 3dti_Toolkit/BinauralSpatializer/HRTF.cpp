@@ -22,9 +22,6 @@
 
 #include <cmath>
 #include <BinauralSpatializer/HRTF.h>
-#include <iostream>
-#include <cfloat>
-#include <fstream>
 #include <ctime>
 #include <list>
 
@@ -159,11 +156,11 @@ namespace Binaural
 		resamplingStep = 0;
 	}
 
-	const int32_t CHRTF::GetHRIRNumberOfSubfilters() const {
+	int32_t CHRTF::GetHRIRNumberOfSubfilters() const {
 	return HRIR_partitioned_NumberOfSubfilters;
 	}
 
-	const int32_t CHRTF::GetHRIRSubfilterLength() const {
+	int32_t CHRTF::GetHRIRSubfilterLength() const {
 	return HRIR_partitioned_SubfilterLength;
 	}
 
@@ -182,7 +179,7 @@ namespace Binaural
 		return enableCustomizedITD;
 	}
 
-	const unsigned long CHRTF::GetCustomizedDelay(float _azimuth, float _elevation, Common::T_ear ear)  const
+	unsigned long CHRTF::GetCustomizedDelay(float _azimuth, float _elevation, Common::T_ear ear) const
 	{
 		
 		int sampleRate = ownerListener->GetCoreAudioState().sampleRate;		//Read the sample rate from the CORE AudioState;						
@@ -302,8 +299,6 @@ namespace Binaural
 			SET_RESULT(RESULT_ERROR_NOTSET, "GetInterpolated_HRIR_frequency: HRTF Set up in progress");
 			return emptyOneEarHRIR;
 		}
-		SET_RESULT(RESULT_WARNING, "GetInterpolated_HRIR_frequency return empty");
-		return emptyOneEarHRIR;
 	}
 
 
@@ -1305,7 +1300,7 @@ namespace Binaural
 		return newHRIR;
 	}
 	
-	const float CHRTF::GetHRIRDelayInterpolationMethod(Common::T_ear ear, float _azimuth, float _elevation) const
+	float CHRTF::GetHRIRDelayInterpolationMethod(Common::T_ear ear, float _azimuth, float _elevation) const
 	{
 		float newHRIRDelay;
 		TBarycentricCoordinatesStruct barycentricCoordinates;
@@ -1333,22 +1328,20 @@ namespace Binaural
 				barycentricCoordinates = GetBarycentricCoordinates(_azimuth, _elevation, orientation_ptoA.azimuth, orientation_ptoA.elevation, orientation_ptoB.azimuth, orientation_ptoB.elevation, orientation_ptoD.azimuth, orientation_ptoD.elevation);
 				newHRIRDelay = CalculateHRIRDelayFromBarycentricCoordinates(ear, barycentricCoordinates, orientation_ptoA, orientation_ptoB, orientation_ptoD);
 			}
-			else if (_elevation < elevation_ptoP)
-			{
+			else {
 				//Forth quadrant
 				barycentricCoordinates = GetBarycentricCoordinates(_azimuth, _elevation, orientation_ptoB.azimuth, orientation_ptoB.elevation, orientation_ptoC.azimuth, orientation_ptoC.elevation, orientation_ptoD.azimuth, orientation_ptoD.elevation);
 				newHRIRDelay = CalculateHRIRDelayFromBarycentricCoordinates(ear, barycentricCoordinates, orientation_ptoB, orientation_ptoC, orientation_ptoD);
 			}
 		}
-		else if (_azimuth < azimuth_ptoP)
-		{
+		else {
 			if (_elevation >= elevation_ptoP)
 			{
 				//First quadrant
 				barycentricCoordinates = GetBarycentricCoordinates(_azimuth, _elevation, orientation_ptoA.azimuth, orientation_ptoA.elevation, orientation_ptoB.azimuth, orientation_ptoB.elevation, orientation_ptoC.azimuth, orientation_ptoC.elevation);
 				newHRIRDelay = CalculateHRIRDelayFromBarycentricCoordinates(ear, barycentricCoordinates, orientation_ptoA, orientation_ptoB, orientation_ptoC);
 			}
-			else if (_elevation < elevation_ptoP) {
+			else {
 				//Third quadrant
 				barycentricCoordinates = GetBarycentricCoordinates(_azimuth, _elevation, orientation_ptoA.azimuth, orientation_ptoA.elevation, orientation_ptoC.azimuth, orientation_ptoC.elevation, orientation_ptoD.azimuth, orientation_ptoD.elevation);
 				newHRIRDelay = CalculateHRIRDelayFromBarycentricCoordinates(ear, barycentricCoordinates, orientation_ptoA, orientation_ptoC, orientation_ptoD);
@@ -1358,7 +1351,7 @@ namespace Binaural
 		return newHRIRDelay;
 	}
 	
-	const float CHRTF::CalculateHRIRDelayFromBarycentricCoordinates(Common::T_ear ear, TBarycentricCoordinatesStruct barycentricCoordinates, orientation orientation_pto1, orientation orientation_pto2, orientation orientation_pto3)const
+	float CHRTF::CalculateHRIRDelayFromBarycentricCoordinates(Common::T_ear ear, TBarycentricCoordinatesStruct barycentricCoordinates, orientation orientation_pto1, orientation orientation_pto2, orientation orientation_pto3)const
 	{
 		float newHRIRDelay=0.0f;
 
@@ -1447,7 +1440,7 @@ namespace Binaural
 		//SET_RESULT(RESULT_OK, "Common delay deleted from HRTF table succesfully");
 	}
 
-	const float CHRTF::CalculateITDFromHeadRadius(float _headRadius, float _interauralAzimuth) const
+	float CHRTF::CalculateITDFromHeadRadius(float _headRadius, float _interauralAzimuth) const
 	{	
 		//Calculate the ITD (from https://www.lpi.tel.uva.es/~nacho/docencia/ing_ond_1/trabajos_05_06/io5/public_html/ & http://interface.cipic.ucdavis.edu/sound/tutorial/psych.html)
 		float ITD = _headRadius * (_interauralAzimuth + std::sin(_interauralAzimuth)) / ownerListener->GetCoreMagnitudes().GetSoundSpeed(); //_azimuth in radians!

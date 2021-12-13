@@ -82,42 +82,42 @@ namespace Common {
 		*	\retval distance vector modulus
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const float GetDistance() const;
+		float GetDistance() const;
 
 		/** \brief Get squared distance
 		*	\details To avoid computing square roots
 		*	\retval distance squared vector modulus
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const float GetSqrDistance() const;
+		float GetSqrDistance() const;
 
 		/** \brief Get elevation in radians
-		*	\details Elevation to which vector is pointing, in accordance with the selected axis convention. Currently uses LISTEN database convention for elevation angles: full circle starting with 0º in front towards up.
+		*	\details Elevation to which vector is pointing, in accordance with the selected axis convention. Currently uses LISTEN database convention for elevation angles: full circle starting with 0ï¿½ in front towards up.
 		*	\retval elevation elevation, in radians
 		*   \eh On error, an error code is reported to the error handler.
 		*/
-		const float GetElevationRadians() const;
+		float GetElevationRadians() const;
 
 		/** \brief Get azimuth in radians
-		*	\details Azimuth to which vector is pointing, in accordance with the selected axis convention. Currently uses LISTEN database convention for for azimuth angles: anti-clockwise full circle starting with 0º in front.
+		*	\details Azimuth to which vector is pointing, in accordance with the selected axis convention. Currently uses LISTEN database convention for for azimuth angles: anti-clockwise full circle starting with 0ï¿½ in front.
 		*	\retval azimuth azimuth, in radians
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const float GetAzimuthRadians() const;
+		float GetAzimuthRadians() const;
 
 		/** \brief Get elevation in degrees
-		*	\details Elevation to which vector is pointing, in accordance with the selected axis convention. Currently uses LISTEN database convention for elevation angles: full circle starting with 0º in front towards up.
+		*	\details Elevation to which vector is pointing, in accordance with the selected axis convention. Currently uses LISTEN database convention for elevation angles: full circle starting with 0ï¿½ in front towards up.
 		*	\retval elevation elevation, in degrees
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const float GetElevationDegrees() const;
+		float GetElevationDegrees() const;
 
 		/** \brief Get azimuth in degrees
-		*	\details Azimuth to which vector is pointing, in accordance with the selected axis convention. Currently uses LISTEN database convention for for azimuth angles: anti-clockwise full circle starting with 0º in front.
+		*	\details Azimuth to which vector is pointing, in accordance with the selected axis convention. Currently uses LISTEN database convention for for azimuth angles: anti-clockwise full circle starting with 0ï¿½ in front.
 		*	\retval azimuth azimuth, in degrees
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const float GetAzimuthDegrees() const;
+		float GetAzimuthDegrees() const;
 
 		/** \brief Set the x,y,z coordinates from azimuth, elevation and distance.
 		*    Currently uses LISTEN database convention for azimuth angles : anti - clockwise full circle starting with 0 degrees in front.
@@ -132,7 +132,7 @@ namespace Common {
 		*	\retval interauralAzimuth interaural azimuth in radians, from -PI/2 (left) to PI/2 degrees (right). 0 radians means the sagittal (median) plane		
 		*   \eh On error, an error code is reported to the error handler.
 		*/
-		const float GetInterauralAzimuthRadians() const;
+		float GetInterauralAzimuthRadians() const;
 
 		/** \brief Get the interaural elevation angle in radians, according to the selected axis convention.
 		*	\details The interaural axis is located along the line that connects the two ears.
@@ -145,7 +145,7 @@ namespace Common {
 		*   3/2*PI means the lower coronal (frontal) semiplane.
 		*   \eh On error, an error code is reported to the error handler.
 		*/
-		const float GetInterauralElevationRadians() const;
+		float GetInterauralElevationRadians() const;
 
 		/** \brief Get the interaural azimuth angle in degrees, according to the selected axis convention.
 		*	\details The interaural axis is located along the line that connects the two ears.
@@ -154,7 +154,7 @@ namespace Common {
 		*	\retval interauralAzimuth interaural azimuth from -90 degrees (left) to +90 degrees (right). 0 degrees means the sagittal (median) plane
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const float GetInterauralAzimuthDegrees() const;
+		float GetInterauralAzimuthDegrees() const;
 
 		/** \brief Get the interaural elevation angle in degrees, according to the selected axis convention.
 		*	\details The interaural axis is located along the line that connects the two ears.
@@ -167,7 +167,7 @@ namespace Common {
 		*   270 degrees means the lower coronal (frontal) semiplane.
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const float GetInterauralElevationDegrees() const;
+		float GetInterauralElevationDegrees() const;
 
 		/** \brief Get the angle that this vector keeps with the forward axis.
 		*	\details
@@ -175,14 +175,14 @@ namespace Common {
 		*   \throws May throw errors to debugger
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const float GetAngleToForwardAxisDegrees() const;
+		float GetAngleToForwardAxisDegrees() const;
 
 		/** \brief Get the angle that this vector keeps with the forward axis.
 		*	\details
 		*	\retval This angle in radians.
 		*   \eh On error, an error code is reported to the error handler.
 		*/
-		const float GetAngleToForwardAxisRadians() const;
+		float GetAngleToForwardAxisRadians() const;
 
 		/** \brief Get the value of a given axis, in accordance with the axis convention
 		*	\details This method is convention-safe
@@ -190,7 +190,7 @@ namespace Common {
 		*	\retval value value of axis component
 		*   \eh On error, an error code is reported to the error handler.
 		*/
-		const float GetAxis(TAxis _axis) const;
+		float GetAxis(TAxis _axis) const;
 
 		/** \brief Set the value of a given axis, in accordance with the axis convention
 		*	\details This method is convention-safe

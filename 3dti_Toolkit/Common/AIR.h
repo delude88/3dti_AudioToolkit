@@ -320,7 +320,7 @@ namespace Common
 		*	\sa SetupIFFT_OLA
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const int GetDataLength() const
+		int GetDataLength() const
 		{
 			//ASSERT(impulseResponseLength > 0, RESULT_ERROR_NOTINITIALIZED, "Data length of AIR has not been defined; have you loaded any AIR data?", "AIR length returned succesfully");
 			return impulseResponseLength;
@@ -332,7 +332,7 @@ namespace Common
 		*	\sa SetupIFFT_OLA
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const int GetDataBlockLength() const {
+		int GetDataBlockLength() const {
 			return impulseResponseBlockLength_time;
 		}
 
@@ -342,7 +342,7 @@ namespace Common
 		*	\sa SetupIFFT_OLA
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const int GetDataBlockLength_freq() const {
+		int GetDataBlockLength_freq() const {
 			return impulseResponseBlockLength_freq;
 		}
 
@@ -352,7 +352,7 @@ namespace Common
 		*	\sa SetupIFFT_OLA
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const int GetDataNumberOfBlocks() const {
+		int GetDataNumberOfBlocks() const {
 			return impulseResponseNumberOfBlocks;
 		}
 

@@ -275,7 +275,7 @@ namespace Common {
 	//////////////////////////////////////////////
 
 		// Get the squared norm
-	const float CQuaternion::SqrNorm() const
+	float CQuaternion::SqrNorm() const
 	{
 		// Error handler:
 		//SET_RESULT(RESULT_OK, "Norm computed succesfully for quaternion");

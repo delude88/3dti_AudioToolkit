@@ -258,13 +258,13 @@ namespace Binaural
 		*	\retval n Number of HRIR subfilters
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const int32_t GetHRIRNumberOfSubfilters() const;
+		int32_t GetHRIRNumberOfSubfilters() const;
 
 		/** \brief	Get the size of subfilters (blocks) in which the HRIR has been partitioned, every subfilter has the same size
 		*	\retval size Size of HRIR subfilters
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const int32_t GetHRIRSubfilterLength() const;
+		int32_t GetHRIRSubfilterLength() const;
 
 		/** \brief	Get if the HRTF has been loaded
 		*	\retval isLoadead bool var that is true if the HRTF has been loaded
@@ -285,7 +285,7 @@ namespace Binaural
 		*   \return ITD ITD calculated with the current listener head circunference
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const unsigned long GetCustomizedDelay(float _azimuth, float _elevation, Common::T_ear ear)const;
+		unsigned long GetCustomizedDelay(float _azimuth, float _elevation, Common::T_ear ear)const;
 
 		/** \brief	Get the distance where the HRTF has been measured
 		*   \return distance of the speakers structure to calculate the HRTF
@@ -387,10 +387,10 @@ namespace Binaural
 		const std::vector<CMonoBuffer<float>> CalculateHRIR_partitioned_FromBarycentricCoordinates(Common::T_ear ear, TBarycentricCoordinatesStruct barycentricCoordinates, orientation orientation_pto1, orientation orientation_pto2, orientation orientation_pto3)const;
 
 		//	Calculate HRIR DELAY using intepolation of the three nearest orientation, in number of samples
-		const float GetHRIRDelayInterpolationMethod(Common::T_ear ear, float _azimuth, float _elevation) const;
+		float GetHRIRDelayInterpolationMethod(Common::T_ear ear, float _azimuth, float _elevation) const;
 		
 		//	Calculate HRIR DELAY using a barycentric coordinates of the three nearest orientation, in number of samples
-		const float CalculateHRIRDelayFromBarycentricCoordinates(Common::T_ear ear, TBarycentricCoordinatesStruct barycentricCoordinates, orientation orientation_pto1, orientation orientation_pto2, orientation orientation_pto3)const;
+		float CalculateHRIRDelayFromBarycentricCoordinates(Common::T_ear ear, TBarycentricCoordinatesStruct barycentricCoordinates, orientation orientation_pto1, orientation orientation_pto2, orientation orientation_pto3)const;
 		
 		//		Calculate and remove the common delay of every HRIR functions of the DataBase Table. Off line Method, called from EndSetUp()
 		void RemoveCommonDelay_HRTFDataBaseTable();
@@ -399,7 +399,7 @@ namespace Binaural
 		//param		_headRadious		listener head radius, set by the App
 		//param		_interauralAzimuth	source interaural azimuth
 		//return	float				customizated ITD
-		const  float CalculateITDFromHeadRadius(float _headRadius, float _interauralAzimuth)const;
+		float CalculateITDFromHeadRadius(float _headRadius, float _interauralAzimuth) const;
 				
 		// Recalculate the HRTF FFT table partitioned or not with a new bufferSize or resampling step
 		void CalculateNewHRTFTable();

@@ -161,7 +161,7 @@ namespace Common {
 		*	\retval sqrnorm squared norm of quaternion
 		*   \eh Nothing is reported to the error handler.
 		*/
-		const float SqrNorm() const;
+		float SqrNorm() const;
 
 		/** \brief Get the pitch angle in radians
 		*	\retval pitch pitch angle in radians
