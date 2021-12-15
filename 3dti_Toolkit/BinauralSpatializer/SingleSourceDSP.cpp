@@ -39,7 +39,7 @@ namespace Binaural {
 
 	//Constructor called from CCore class
 	CSingleSourceDSP::CSingleSourceDSP(CCore* _ownerCore)
-		:ownerCore{ _ownerCore }, enableInterpolation{ true }, enableFarDistanceEffect{ true }, enableDistanceAttenuationAnechoic{ true }, enableNearFieldEffect{true}, 
+		:ownerCore{ _ownerCore }, enableInterpolation{ true }, enableFarDistanceEffect{ true }, enableDistanceAttenuationAnechoic{ true }, enableDistanceAttenuationReverb{ true }, enableNearFieldEffect{true},
 		spatializationMode{ TSpatializationMode::HighQuality}
 	{
 		// TO THINK: our initial idea was not to use error handler in constructors. Should this this an exception to the rule?
